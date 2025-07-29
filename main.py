@@ -19,6 +19,10 @@ app.add_middleware(
 app.include_router(permission.router, prefix="/permission")  # ✅ For HOD permissions
 app.include_router(login.router, prefix="/auth")             # ✅ For login
 
+@app.get("/")
+def read_root():
+    return {"message": "Student Attendance API is running"}
+
 @app.post("/attendance/submit")
 def submit_attendance(attendance: schemas.AttendanceRequest):
     print("Attendance Received:")
